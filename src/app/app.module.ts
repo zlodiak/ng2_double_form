@@ -4,11 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { FormReactiveComponent } from './components/form-reactive/form-reactive.component';
+import { FormTemplateComponent } from './components/form-template/form-template.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FormReactiveComponent,
+    FormTemplateComponent
   ],
   imports: [
     BrowserModule,
