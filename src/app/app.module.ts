@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -15,6 +16,8 @@ import { FormTemplateComponent } from './components/form-template/form-template.
     FormTemplateComponent
   ],
   imports: [
+    ReactiveFormsModule,
+    FormsModule,
     BrowserModule,
     AppRoutingModule
   ],

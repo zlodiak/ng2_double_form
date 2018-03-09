@@ -1,3 +1,43 @@
-<p>
-  form-reactive works!
-</p>
+<div class="wrap">
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="line" [ngClass]="{'error': !form.controls.currPass.valid && form.controls.currPass.dirty}">
+      <label for="">Текущий пароль</label>
+      <input type="text" formControlName="currPass">
+    </div>
+
+    <div class="line" [ngClass]="{'error': !form.controls.newPass.valid && form.controls.newPass.dirty}">
+      <label for="">Новый пароль</label>
+      <input type="password" formControlName="newPass">
+    </div>
+
+    <div class="line" [ngClass]="{'error': !form.controls.newPassConfirm.valid && form.controls.newPassConfirm.dirty}">
+      <label for="">Повторить новый пароль</label>
+      <input type="password" formControlName="newPassConfirm">
+    </div>
+      
+    <div class="line" [ngClass]="{'error': !form.controls.newLogin.valid && form.controls.newLogin.dirty}">
+      <label for="">Новый логин</label>
+      <input type="text" formControlName="newLogin">
+    </div>
+
+    <div class="line" [ngClass]="{'error': !form.controls.question.valid && form.controls.question.dirty}">
+      <label for="">Контрольный вопрос</label>
+      <select name="question" id="question" formControlName="question">
+        <option *ngFor="let q of questions; let i = index" value="{{ i }}">
+          {{ q }}
+        </option>
+      </select>
+    </div>
+
+    <div class="line" [ngClass]="{'error': !form.controls.answer.valid && form.controls.answer.dirty}">
+      <label for="">Ответ на контрольный вопрос</label>
+      <input type="text" formControlName="answer">
+    </div>
+
+    <div class="line">
+      <button [disabled]="!form.valid" type="submit">Отправить</button>
+    </div>
+
+    <div class="look" (click)="look()">look</div>
+  </form>
+</div>
