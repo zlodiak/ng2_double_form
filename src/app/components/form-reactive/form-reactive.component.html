@@ -3,11 +3,15 @@
     <div class="line" [ngClass]="{'error': !form.controls.currPass.valid && form.controls.currPass.dirty}">
       <label for="">Текущий пароль</label>
       <input type="text" formControlName="currPass">
+      <p class="error-message" *ngIf="form.get('newPass').hasError('checkCurrPass')">checkCurrPass</p>
     </div>
 
     <div class="line" [ngClass]="{'error': !form.controls.newPass.valid && form.controls.newPass.dirty}">
       <label for="">Новый пароль</label>
       <input type="password" formControlName="newPass">
+      <p class="error-message" *ngIf="form.get('newPass').hasError('required')">А пароля-то - нет</p>
+      <p class="error-message" *ngIf="form.get('newPass').hasError('minlength')">А пароль-то - коротковат</p>
+      <p class="error-message" *ngIf="form.get('newPass').hasError('maxlength')">А пароль-то - длинноват</p>      
     </div>
 
     <div class="line" [ngClass]="{'error': !form.controls.newPassConfirm.valid && form.controls.newPassConfirm.dirty}">
@@ -32,6 +36,11 @@
     <div class="line" [ngClass]="{'error': !form.controls.answer.valid && form.controls.answer.dirty}">
       <label for="">Ответ на контрольный вопрос</label>
       <input type="text" formControlName="answer">
+    </div>
+
+    <div class="line" [ngClass]="{'error': !form.controls.personalData.valid && form.controls.personalData.dirty}">
+      <label for="">Согласие на использование персональных данных</label>
+      <input type="checkbox" value="true" formControlName="personalData">
     </div>
 
     <div class="line">

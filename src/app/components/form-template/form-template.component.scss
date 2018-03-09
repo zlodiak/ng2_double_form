@@ -1,0 +1,14 @@
+.wrap{
+
+    .line{
+        padding-bottom: 10px;
+
+        &.error{
+            border: 1px solid red;
+        }
+
+        label{
+            display: block;
+        }
+    }
+}

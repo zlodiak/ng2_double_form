@@ -1,3 +1,54 @@
-<p>
-  form-template works!
-</p>
+<div class="wrap">
+    <form class="form" (ngSubmit)="onSubmit()">
+        <div class="line">
+        <label for="">Текущий пароль</label>
+        <input type="text" [(ngModel)]="form.currPass" name="currPass" (ngModelChange)="validateField('currPass')">
+      </div>
+  
+      <div class="line">
+        <label for="">Новый пароль</label>
+        <input type="password" ngModel [(ngModel)]="form.newPass" name="newPass" (ngModelChange)="validateField('newPass')">     
+      </div>
+  
+      <div class="line">
+        <label for="">Повторить новый пароль</label>
+        <input type="password" ngModel [(ngModel)]="form.newPassConfirm" name="newPassConfirm" (ngModelChange)="validateField('newPassConfirm')">
+      </div>
+        
+      <div class="line">
+        <label for="">Новый логин</label>
+        <input type="text" ngModel [(ngModel)]="form.newLogin" name="newLogin" (ngModelChange)="validateField('newLogin')">
+      </div>
+  
+      <div class="line">
+        <label for="">Контрольный вопрос</label>
+        <select name="question" id="question" ngModel [(ngModel)]="form.question" name="question" (ngModelChange)="validateField('question')">
+          <option *ngFor="let q of questions; let i = index" value="{{ i }}">
+            {{ q }}
+          </option>
+        </select>
+      </div>
+  
+      <div class="line">
+        <label for="">Ответ на контрольный вопрос</label>
+        <input type="text" ngModel [(ngModel)]="form.answer" name="answer" (ngModelChange)="validateField('answer')">
+      </div>
+  
+      <div class="line">
+        <label for="">Согласие на использование персональных данных</label>
+        <input type="checkbox" value="true" ngModel [(ngModel)]="form.personalData" name="personalData" (ngModelChange)="validateField('personalData')">
+      </div>
+  
+      <div class="line">
+        <button [disabled]="isDisabledSubmitBtn()" type="submit">Отправить</button>
+      </div>
+    </form>
+  </div>
+
+<pre>
+  {{ errors | json }}
+</pre>
+
+<pre>
+  {{ form | json }}
+</pre>

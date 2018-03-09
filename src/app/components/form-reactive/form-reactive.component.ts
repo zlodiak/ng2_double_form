@@ -36,9 +36,23 @@ export class FormReactiveComponent implements OnInit {
       'question':         new FormControl(null, Validators.required),
       'answer':           new FormControl(null, [ Validators.required, 
                                                   Validators.minLength(1), 
-                                                  Validators.maxLength(30)])
+                                                  Validators.maxLength(30)]),
+      'personalData':     new FormControl(null,   [], this.checkCheckbox.bind(this)),                                                  
     });    
   }
+
+  checkCheckbox(control: FormControl): Promise<any> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        console.log(control);
+        if(control.value === true) {
+          resolve(null);
+        } else {
+          resolve({checkCheckbox: true});
+        } 
+      });     
+    });
+  }  
 
   checkCurrPass(control: FormControl): Promise<any> {
     return new Promise((resolve, reject) => {
@@ -79,6 +93,7 @@ export class FormReactiveComponent implements OnInit {
 
   onSubmit(): void {
     console.log('submit', this.form);
+    alert('form is submit');
   }
 
   look() {
